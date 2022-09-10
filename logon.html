@@ -2,71 +2,53 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <title>Edukate - Online Education Website Template</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free HTML Templates" name="keywords">
-    <meta content="Free HTML Templates" name="description">
+    <meta charset="UTF-8">
+    <title>Login Page in HTML with CSS Code Example</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"> 
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/login.css">
 
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
-
-
-    
-
-
-    <!-- Header Start -->
-    <div class="jumbotron jumbotron-fluid page-header position-center overlay-bottom" style="margin-bottom: 2000px;" ><div class="mx-auto mb-5" style="width: 100%; max-width: 600px;"></div>>
-        <div class="container center ">
-            <h1  class="m-0 text-uppercase text-primary"><p style="color:white"><i class="fa fa-book-reader mr-3"></i>EPI USE</p></h1>
-            <div class="container center">
-            <div class="row">
-                <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">
-                    <div class="position-center">
-                       
-                    </a>   
-                    </div>
-                </div>
-                <div class="col-lg-7">
-                    <div class="section-title position-center">
-            <form id="login_form" class="form_class" action="login/login-access.php" method="post">
-                <div class="form_div">
-                    <label>Email Address:</Address></label>
-                    <input class="field_class" name="login_txt" type="text"  autofocus>
-                    <label>Password:</label>
-                    <input id="pass" class="field_class" name="password_txt" type="password" >
-                    <button class="submit_class" type="submit" form="login_form" onclick="return validarLogin()">Log in</button>
-                </div>
-                <div class="info_div">
-                    <p><a href="register/reg-form.php">Forgot Password ?</a></p>
-                </div>
-            </form>
-                </div>
+    <!-- partial:index.partial.html -->
+    <div class="box-form">
+        <div class="left">
+            <div class="overlay">
+                <h1>EPI-USE</h1>
+                <p>Welcome to the jungle of EPI-USE</p>
             </div>
         </div>
+
+        <form action="/action_page.php">
+            <div class="right">
+                <h5>Login</h5>
+                <div class="inputs">
+                    <input type="text" placeholder="user@epi-use.com" id="email">
+                    <br>
+                    <input type="password" placeholder="password" id="" password>
+                </div>
+
+                <br><br>
+
+                <div class="remember-me--forget-password">
+                    <!-- Angular -->
+                    <label>
+                        <input type="checkbox" name="item" checked/>
+                        <span class="text-checkbox">Remember me</span>
+                    </label>
+                    <p>forget password?</p>
+                </div>
+
+                <br>
+                <button>Login</button>
+            </div>
+        </form>
     </div>
-    <!-- Header End -->
+    <!-- partial -->
 
-
-    
-
-
-    
+</body>
 
 </html>
