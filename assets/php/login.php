@@ -16,8 +16,14 @@
     
     $result = mysqli_query($conn, $query)
             or die("<p style=\"color: red;\">Could not execute query!</p>");
-
+    
+    session_start();
+    while ($row = mysqli_fetch_array($result)) {
+        $_SESSION["UserID"] = $row['userID'];
+        $_SESSION["UserType"] = $row['userTypeID'];
+    }
     mysqli_close($conn);
+    header('Location: ../index.html');
             // display message to user
     echo "<p style=\"color: blue;\">the new product line was addded</p>";
 ?>
