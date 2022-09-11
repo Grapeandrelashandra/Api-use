@@ -17,5 +17,7 @@
     $result = mysqli_query($conn, $query)
             or die("<p style=\"color: red;\">Could not execute query!</p>");
 
-
+    mysqli_close($conn);
+            // display message to user
+    echo "<p style=\"color: blue;\">the new product line was addded</p>";
 ?>
