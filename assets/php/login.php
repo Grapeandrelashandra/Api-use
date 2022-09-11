@@ -8,12 +8,14 @@
     #establishing a connection
 
     
-    $conn = sqlsrv_connect($serverName, $connectionOptions) 
-                die("Connection failed: " . $conn->connect_error);
+    $conn =  mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+                    or die("<p style=\"color: red;\">Could not connect to database!</p>");
 
-    $query = "";
-
-    $getResults= sqlsrv_query($conn, $query);
+    // issue query instructions
+    $query = "SELECT * from employees";
+    
+    $result = mysqli_query($conn, $query)
+            or die("<p style=\"color: red;\">Could not execute query!</p>");
 
 
 ?>
