@@ -2,8 +2,8 @@
     #Aquiring required information
     include_once("config.php");
 
-    $email = $_REQUEST['email'];
-    $password = $_REQUEST['password'];
+    #$email = $_REQUEST['email'];
+    #$password = $_REQUEST['password'];
 
     #establishing a connection
 
