@@ -1,4 +1,5 @@
 <?php
+    
     #Aquiring required information
     include_once("config.php");
 
@@ -19,11 +20,12 @@
     
     session_start();
     while ($row = mysqli_fetch_array($result)) {
-        $_SESSION["UserID"] = $row['userID'];
-        $_SESSION["UserType"] = $row['userTypeID'];
+        $_SESSION["userID"] = $row['userID'];
+        echo $_SESSION['userID']
+        $_SESSION["userType"] = $row['userType'];
     }
     mysqli_close($conn);
-    header('Location: ../index.html');
+    header('Location: http://mwenyamusonda.great-site.net/Epi-Use/index.php');
             // display message to user
     echo "<p style=\"color: blue;\">the new product line was addded</p>";
 ?>

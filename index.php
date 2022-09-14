@@ -175,7 +175,7 @@
 
         <?php
     } else {
-        header('Location: logon.html');
+        header('Location: signin.html');
     }
         ?>
 </body>
