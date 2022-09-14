@@ -3,7 +3,7 @@
 
 <head>
     <?php
-
+        session_start();
     ?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,20 +40,13 @@
     </div>
     <div class="login-block">
         <h1>Sign in</h1>
-        <form action="assets/php/login.php" method="post">
+        <form action="assets/php/login.php" method="get">
             <label for name="username" style="color:#49c628a6">USERNAME :</label>
-            <input type="text " value="" placeholder="Username " id="username " >
+            <input type="email" value="" placeholder="email@email.com " id="email">
             <label for name="password" style="color:#49c628a6">PASSWORD :</label>
-            <input type="password" value=""placeholder="Password" id="password ">
+            <input type="password" value="" placeholder="Password" id="password">
             <input type="submit" value="submit" id="submit">
         </form>
-        <p class="error ">
-            <?php echo @$record_error ?>
-        </p>
-
-        <p class="sucess ">
-            <?php echo @$record_success?>
-        </p>
     </div>
 
 

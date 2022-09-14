@@ -35,8 +35,6 @@
         
         mysqli_close($conn);
         header('Location: ../../index.php');
-                // display message to user
-        echo "<p style=\"color: blue;\">the new product line was addded</p>";
 ?>
     
 </body>
