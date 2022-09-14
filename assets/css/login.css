@@ -87,3 +87,8 @@ body {
 .login-block button:hover {
     background: #49c628a6;
 }
+
+h1 {
+    text-align: center;
+    text-emphasis-color: #fff;
+}

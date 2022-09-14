@@ -23,7 +23,7 @@
                         <div class="inputs">
                             <input type="text" placeholder="user@epi-use.com" id="email">
                             <br>
-                            <input type="password" placeholder="password" id="password" >
+                            <input type="password" placeholder="password" id="password">
                         </div>
 
                         <br><br>
@@ -38,6 +38,13 @@
 
                         <br>
                         <button type="submit" class="btn btn-default">Login</button>
+                        <p class="error">
+                            <?php echo @$record_error ?>
+                        </p>
+
+                        <p class="sucess">
+                            <?php echo @$record_success?>
+                        </p>
                     </div>
                 </form>
             </div>
