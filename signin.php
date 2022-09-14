@@ -3,7 +3,6 @@
 
 <head>
     <?php
-    define('mysql'),
 
     ?>
         <meta charset="utf-8">
@@ -41,8 +40,8 @@
     </div>
     <div class="login-block">
         <h1>Sign in</h1>
-        <<<<<<< HEAD <label for "username" style="color:#49c628a6">USERNAME :</label><input type=" text " value=" " placeholder="Username " id="username " />
-            <label for "password " style="color:#49c628a6">PASSWORD :</label><input type="password " value=" " placeholder="Password " id="password " />
+        <label for name= "username" style="color:#49c628a6">USERNAME :</label><input type=" text " value=" " placeholder="Username " id="username " />
+            <label for name="password " style="color:#49c628a6">PASSWORD :</label><input type="password " value=" " placeholder="Password " id="password " />
             <button>Submit</button>
             <p class="error ">
                 <?php echo @$record_error ?>
