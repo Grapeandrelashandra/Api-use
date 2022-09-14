@@ -4,7 +4,7 @@
 <head>
 <?php
     session_start();
-    if (isset($_SESSION['UserID'])) {
+    if (isset($_SESSION['userID'])) {
     ?>
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js">
@@ -183,7 +183,7 @@
 
         <?php
     } else {
-        header('Location: signin.html');
+        header('Location: signin.php');
     }
         ?>
 </body>
