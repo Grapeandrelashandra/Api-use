@@ -2,6 +2,10 @@
 <html lang="en">
 
 <head>
+<?php
+    session_start();
+    if (isset($_SESSION['UserID'])) {
+    ?>
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js">
     </script>
@@ -19,21 +23,29 @@
 
         // For each orgchart box, provide the name, manager, and tooltip to show.
         data.addRows([
-            [{
-                    'v': 'Mike',
-                    'f': 'Mike<div style="color:red; font-style:italic">President</div>'
-                },
-                '', 'The President'
-            ],
-            [{
-                    'v': 'Jim',
-                    'f': 'Jim<div style="color:red; font-style:italic">Vice President</div>'
-                },
-                'Mike', 'VP'
-            ],
-            ['Alice', 'Mike', ''],
-            ['Bob', 'Jim', 'Bob Sponge'],
-            ['Carol', 'Bob', '']
+            <?php
+                require_once('assets/php/config.php');
+
+                $conn =  new mysqli(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+                        or die("<p style=\"color: red;\">Could not connect to database!</p>");
+
+                // issue query instructions
+                $query = "SELECT concat(t1.firstName , \" \",  t1.lastName) as employee , concat( t3.firstName , \" \", t3.lastName) as manager , t2.employeeRole from employees as t1
+                            INNER JOIN employeeroles as t2  ON t1.employeeRole = t2.employeeRoleID
+                            INNER JOIN employees as t3 ON t1.manager = t3.employeeID or t1.manager = 0;";
+                
+                $result = mysqli_query($conn, $query)
+                        or die("<p style=\"color: red;\">Could not find employees</p>");
+
+                $row = mysqli_fetch_array($result);
+                echo '[{\'v\':\''.$row['employee'].'\', \'f\':\''.$row['employee'].'<div style="color:red; font-style:italic">'.$row['employeeRole'].'</div>\'},
+                \''.$row['manager'].'\', \''.$row['employeeRole'].'\']';     
+
+                while($row = mysqli_fetch_array($result)){
+                    echo ',[{\'v\':\''.$row['employee'].'\', \'f\':\''.$row['employee'].'<div style="color:red; font-style:italic">'.$row['employeeRole'].'</div>\'},
+                    \''.$row['manager'].'\', \''.$row['employeeRole'].'\']';
+                }
+            ?>
         ]);
 
         // Create the chart.
@@ -115,10 +127,6 @@
 </head>
 
 <body>
-    <?php
-    session_start();
-    if (isset($_SESSION['userID'])) {
-    ?>
 
     <!-- Static navbar -->
     <div class="navbar navbar-inverse navbar-static-top">
@@ -129,14 +137,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">EPI USE</a>
+                <a class="navbar-brand" href="index.php">EPI USE</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
 
                     <li><a href="profile.html">View profile</a></li>
                     <li>
-                        <a href="manage.html">Manage Employees</a>
+                        <a href="manage.php">Manage Employees</a>
                     </li>
                 </ul>
             </div>
