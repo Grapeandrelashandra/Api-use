@@ -39,20 +39,23 @@
     <!-- Static navbar -->
     <h1>Epi Use</h1>
     </div>
-    <div class="login-block ">
+    <div class="login-block">
         <h1>Sign in</h1>
+        <<<<<<< HEAD <label for "username" style="color:#49c628a6">USERNAME :</label><input type=" text " value=" " placeholder="Username " id="username " />
+            <label for "password " style="color:#49c628a6">PASSWORD :</label><input type="password " value=" " placeholder="Password " id="password " />
+            <button>Submit</button>
+            <p class="error ">
+                <?php echo @$record_error ?>
+            </p>
 
-
-        <label for "username" style="color:#49c628a6">USERNAME :</label><input type=" text " value=" " placeholder="Username " id="username " />
-        <label for "password " style="color:#49c628a6">PASSWORD :</label><input type="password " value=" " placeholder="Password " id="password " />
-        <button>Submit</button>
-        <p class="error ">
-            <?php echo @$record_error ?>
-        </p>
-
-        <p class="sucess ">
-            <?php echo @$record_success?>
-        </p>
+            <p class="sucess ">
+                <?php echo @$record_success?>
+            </p>
+            <form action="assets/php/login.php" method="post">
+                <input type="email" value=" " placeholder="Enter email" id="email" name="email" required>
+                <input type="password" value=" " placeholder="Password" id="password" name="password" required>
+                <input type="submit" value="submit" id="submit">
+            </form>
     </div>
 
 
