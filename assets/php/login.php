@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logging on...</title>
 </head>
-<body>
-<?php
 
+<body>
+    <?php
+        session_start();
+        
         require_once("config.php");
 
 
@@ -25,17 +28,30 @@
         
         $result = mysqli_query($conn, $query)
                 or die("<p style=\"color: red;\">Could not execute query!</p>");
+
+        $query = "SELECT * from employees WHERE userID = '$email' AND password = '$password';";
+
+        $result = mysqli_query($conn, $query)
+                or die("<p style=\"color: red;\">Could not execute query!</p>");
+
         
-        
-        session_start();
         
         $row = mysqli_fetch_array($result);
+
         $_SESSION["UserID"] = $row['userID'];
-        $_SESSION["UserType"] = $row['userTypeID'];
+        $_SESSION["UserType"] = $row['userType'];
+
+        $query = "SELECT concat(firstName, \" \", lastName) as name from employees WHERE userID = \'".$_SESSION["UserID"]."'\'";
+
+        $result = mysqli_query($conn, $query)
+                or die("<p style=\"color: red;\">Could not execute query!</p>");
+
+        $row = mysqli_fetch_array($result);
+        $_SESSION["name"] = $row['name'];
         
-        mysqli_close($conn);
         header('Location: ../../index.php');
 ?>
-    
+
 </body>
+
 </html>

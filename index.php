@@ -4,7 +4,7 @@
 <head>
 <?php
     session_start();
-    if (isset($_SESSION['userID'])) {
+    if (isset($_SESSION['UserID'])) {
     ?>
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js">
