@@ -3,8 +3,8 @@
 
 <head>
 <?php
-    session_start();
-    if (isset($_SESSION['UserID'])) {
+    // session_start();
+    // if (isset($_SESSION['UserID'])) {
     ?>
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js">
@@ -184,9 +184,9 @@
         <script src="assets/js/bootstrap.min.js "></script>
 
         <?php
-    } else {
-        header('Location: signin.php');
-    }
+    // } else {
+    //     header('Location: signin.php');
+    // }
         ?>
 </body>
 
