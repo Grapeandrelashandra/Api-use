@@ -31,27 +31,27 @@
 
 <body>
     <?php
-    session_start();
-    if (isset($_SESSION['UserID'])) {
-        if ($_SESSION['UserType'] == 1) {
-            // Connect to database
-            require_once('assets/php/config.php');
+    // session_start();
+    // if (isset($_SESSION['UserID'])) {
+    //     if ($_SESSION['UserType'] == 1) {
+    //         // Connect to database
+    //         require_once('assets/php/config.php');
 
-            $conn =  new mysqli(SERVERNAME, USERNAME, PASSWORD, DATABASE)
-                or die("<p style=\"color: red;\">Could not connect to database!</p>");
+    //         $conn =  new mysqli(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+    //             or die("<p style=\"color: red;\">Could not connect to database!</p>");
 
-            // Get all the categories from category table
-            $userTypeQuery = "SELECT userTypeID, userType FROM usertypes";
-            $userTypes = mysqli_query($conn, $userTypeQuery)
-                or die("couldn't find user types");
+    //         // Get all the categories from category table
+    //         $userTypeQuery = "SELECT userTypeID, userType FROM usertypes";
+    //         $userTypes = mysqli_query($conn, $userTypeQuery)
+    //             or die("couldn't find user types");
 
-            $employeeRoleQuery = "SELECT * FROM employeeRoles;";
-            $employeeRole = mysqli_query($conn, $employeeRoleQuery)
-                or die("couldn't find Roles");
+    //         $employeeRoleQuery = "SELECT * FROM employeeRoles;";
+    //         $employeeRole = mysqli_query($conn, $employeeRoleQuery)
+    //             or die("couldn't find Roles");
 
-            $managersQuery = "SELECT employeeID, concat(firstName, ' ', lastName) as name FROM employees;";
-            $managers = mysqli_query($conn, $managersQuery)
-                or die("Couldn't find manager names");
+    //         $managersQuery = "SELECT employeeID, concat(firstName, ' ', lastName) as name FROM employees;";
+    //         $managers = mysqli_query($conn, $managersQuery)
+    //             or die("Couldn't find manager names");
 
 
             // The following code checks if the submit button is clicked
@@ -229,12 +229,12 @@
     <script src="assets/js/bootstrap.min.js "></script>
 </body>
 <?php
-        } else {
-            header("location: index.php");
-        }
-    } else {
-        header("location: signin.php");
-    }
+    //     } else {
+    //         header("location: index.php");
+    //     }
+    // } else {
+    //     header("location: signin.php");
+    // }
 ?>
 
 </html>
