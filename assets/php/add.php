@@ -14,7 +14,6 @@
     session_start();
     // The following code checks if the submit button is clicked
     // and inserts the data in the database accordingly
-    if (isset($_POST['submit'])) {
         require_once('config.php');
 
         $conn =  new mysqli(SERVERNAME, USERNAME, PASSWORD, DATABASE)
@@ -53,7 +52,6 @@
             echo '<script>alert("Empoyee added successfully")</script>';
             header("location: ../../manage.php");
         }
-    }
     ?>
 
 
