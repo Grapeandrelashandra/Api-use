@@ -49,24 +49,6 @@
                 <input type="submit" value="submit" id="submit">
             </form>
     </div>
-    <?php
-        require_once("config.php");
-
-        #establishing a connection
-        $conn =  new mysqli(SERVERNAME, USERNAME, PASSWORD, DATABASE)
-                        or die("<p style=\"color: red;\">Could not connect to database!</p>");
-
-        // issue query instructions
-        $query = "SELECT * from users;";
-        
-        $result = mysqli_query($conn, $query)
-                or die("<p style=\"color: red;\">Could not execute query!</p>");
-        
-        
-        $row = mysqli_fetch_array($result);
-
-        echo "<h1>".$row['email'].'</h1>';
-    ?>
 
 
 

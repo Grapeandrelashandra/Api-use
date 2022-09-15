@@ -4,8 +4,6 @@
 <head>
 <?php
     session_start();
-    $_SESSION['UserID'] = '1';
-    $_SESSION['UserType'] = '1';
     if (isset($_SESSION['UserID'])) {
     ?>
 
@@ -146,7 +144,7 @@
 
                     <li><a href="profile.php?id=<?php echo $_SESSION['UserID']; ?>">View profile</a></li>
                     <?php if($_SESSION['UserType'] == 1){ ?>
-                        <li><a href="newEmp.php">New Profile</a></li>
+                        <li><a href="adddetails.php">New Profile</a></li>
                         <li><a href="manage.php">Manage Employees</a></li>
                     <?php } ?>
                     <li><a href="assets/php/SessionEnd.php">log out</a></li>
