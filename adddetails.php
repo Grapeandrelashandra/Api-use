@@ -1,7 +1,7 @@
 <?php
     session_start();
-    if(isset($_SESSION['UserID'])){ 
-        if($_SESSION['UserType'] == 1){ 
+    // if(isset($_SESSION['UserID'])){ 
+    //     if($_SESSION['UserType'] == 1){ 
     // Connect to database
     require_once('assets/php/config.php');
 
@@ -219,11 +219,11 @@
     <script src="assets/js/bootstrap.min.js "></script>
 </body>
 <?php
-        }else{
-            header("location: index.php");
-        }}else{
-            header("location: signin.php");
-        }
+        // }else{
+        //     header("location: index.php");
+        // }}else{
+        //     header("location: signin.php");
+        // }
 ?>
 
 </html>
