@@ -1,5 +1,4 @@
 <?php
-    session_start();
     // if(isset($_SESSION['UserID'])){ 
     //     if($_SESSION['UserType'] == 1){ 
     // Connect to database
@@ -63,18 +62,18 @@
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
                 <a class="navbar-brand" href="index.php">Epi Use</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="profile.php?id=<?php echo $_SESSION['UserID']; ?>">View profile</a></li>
                     <?php if($_SESSION['UserType'] == 1){ ?>
-                        <li><a href="adddetails.php">New Profile</a></li>
-                        <li><a href="manage.php">Manage Employees</a></li>
+                    <li><a href="adddetails.php">New Profile</a></li>
+                    <li><a href="manage.php">Manage Employees</a></li>
                     <?php } ?>
                     <li><a href="assets/php/SessionEnd.php">log out</a></li>
                 </ul>
@@ -109,12 +108,14 @@
                     </div>
                     <div class="form-group">
                         <label for="DOB">Date of Birth</label>
-                        <input type="date" class="form-control" name="DOB" placeholder="Employee Date Of Birth" required>
+                        <input type="date" class="form-control" name="DOB" placeholder="Employee Date Of Birth"
+                            required>
                         <br>
                     </div>
                     <div class="form-group">
                         <label for="email">Cell Phone Number</label>
-                        <input type="tel" class="form-control" name="phone" placeholder="0630462549" pattern="[0]+[0-9]{9}" required>
+                        <input type="tel" class="form-control" name="phone" placeholder="0630462549"
+                            pattern="[0]+[0-9]{9}" required>
                         <br>
                     </div>
                     <div class=" form-group ">
@@ -132,13 +133,13 @@
                                 while ($position = mysqli_fetch_array(
                                         $employeeRole,MYSQLI_ASSOC)):;
                             ?>
-                                <option value="<?php echo $position['employeeRoleID'];
+                            <option value="<?php echo $position['employeeRoleID'];
                                     // The value we usually set is the primary key
                                 ?>">
-                                    <?php echo $position["employeeRole"];
+                                <?php echo $position["employeeRole"];
                                         // To show the category name to the user
                                     ?>
-                                </option>
+                            </option>
                             <?php
                                 endwhile;
                                 // While loop must be terminated
@@ -156,13 +157,13 @@
                                 while ($userType = mysqli_fetch_array(
                                         $userTypes,MYSQLI_ASSOC)):;
                             ?>
-                                <option value="<?php echo $userType['userTypeID'];
+                            <option value="<?php echo $userType['userTypeID'];
                                     // The value we usually set is the primary key
                                 ?>">
-                                    <?php echo $userType["userType"];
+                                <?php echo $userType["userType"];
                                         // To show the category name to the user
                                     ?>
-                                </option>
+                            </option>
                             <?php
                                 endwhile;
                                 // While loop must be terminated
@@ -171,9 +172,9 @@
                         <br>
                     </div>
                     <div class="form-group ">
-                    <label for="manager ">Manager</label><br>
-                    <select name="manager">
-                        <?php
+                        <label for="manager ">Manager</label><br>
+                        <select name="manager">
+                            <?php
                             // use a while loop to fetch data
                             // from the $all_categories variable
                             // and individually display as an option
@@ -187,22 +188,24 @@
                                     // To show the category name to the user
                                 ?>
                             </option>
-                        <?php
+                            <?php
                             endwhile;
                             // While loop must be terminated
                         ?>
-                    </select>
-                    <br>
-                    </div>
-                    <div class="form-group ">
-                        <label for="email ">Email Addresss</label> <input type="email " class="form-control " name="email" id="NameInputEmail1 " placeholder="James203@epiuse.co.za " required>
+                        </select>
                         <br>
                     </div>
                     <div class="form-group ">
-                        <label for="password ">Default Password</label> <input type="password" class="form-control " name="password" id="Inputpassword " placeholder="" required>
+                        <label for="email ">Email Addresss</label> <input type="email " class="form-control "
+                            name="email" id="NameInputEmail1 " placeholder="James203@epiuse.co.za " required>
                         <br>
                     </div>
-                    <button type="submit" name = "submit" id= "submit" class="btn btn-success ">SUBMIT</button>
+                    <div class="form-group ">
+                        <label for="password ">Default Password</label> <input type="password" class="form-control "
+                            name="password" id="Inputpassword " placeholder="" required>
+                        <br>
+                    </div>
+                    <button type="submit" name="submit" id="submit" class="btn btn-success ">SUBMIT</button>
                 </form>
             </div>
         </div>
