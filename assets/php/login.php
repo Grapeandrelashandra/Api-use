@@ -17,7 +17,7 @@
 
         #define("DATABASE","epiz_32570844_XXX");
         $email = $_REQUEST['email'];
-        $password = $_REQUEST['password'];
+        $password = password_hash($_REQUEST['password'], PASSWORD_DEFAULT);
 
         #establishing a connection
         $conn =  new mysqli(SERVERNAME, USERNAME, PASSWORD, DATABASE)
