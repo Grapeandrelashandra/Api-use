@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <script src="https://kit.fontawesome.com/15f4b1a016.js" crossorigin="anonymous"></script>
-    <title>STANLEY - Free Bootstrap Theme </title>
+    <title>Hierachy</title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
