@@ -17,7 +17,7 @@
 
         #define("DATABASE","epiz_32570844_XXX");
         $email = $_REQUEST['email'];
-        $password = password_hash($_REQUEST['password'], PASSWORD_DEFAULT);
+        $password = $_REQUEST['password'];
 
         #establishing a connection
         $conn =  new mysqli(SERVERNAME, USERNAME, PASSWORD, DATABASE)
@@ -35,11 +35,7 @@
         $_SESSION["UserID"] = $row['userID'];
         $_SESSION["UserType"] = $row['userType'];
         
-        if(isset($_SESSION["UserID"])){
-            header('Location: ../../index.php');
-        }else {
-            echo "<script> alert('sign in failied');</script>";
-        }
+        header('Location: ../../index.php');
 ?>
 
 </body>
