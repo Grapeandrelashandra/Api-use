@@ -83,7 +83,7 @@ table.dataTable thead .sorting_desc_disabled:before {
                     <span id="search" style=" display: flex;">
                         <input type="text" class="form-control border-light" id="myInput"
                             style="padding:10px 10px; border-radius: 2px;" width="10px"
-                            placeholder="Search for Employee">
+                            placeholder="Search for Employee" onkeyup="myFunction()">
                         <button onclick="myFunction()">Search</button>
                     </span>
                 </div>
