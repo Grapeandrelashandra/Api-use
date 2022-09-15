@@ -1,28 +1,5 @@
 <?php
-    // if(isset($_SESSION['UserID'])){ 
-    //     if($_SESSION['UserType'] == 1){ 
-    // Connect to database
-    require_once('assets/php/config.php');
-
-    $conn =  new mysqli(SERVERNAME, USERNAME, PASSWORD, DATABASE)
-            or die("<p style=\"color: red;\">Could not connect to database!</p>");
-  
-    // Get all the categories from category table
-    $userTypeQuery = "SELECT userTypeID, userType FROM usertypes";
-    $userTypes = mysqli_query($conn,$userTypeQuery)
-                    or die("couldn't find user types");
-
-    $employeeRoleQuery = "SELECT * FROM employeeRoles;";
-    $employeeRole = mysqli_query($conn,$employeeRoleQuery) 
-                        or die("couldn't find Roles");
-
-    $managersQuery = "SELECT employeeID, concat(firstName, ' ', lastName) as name FROM employees;";
-    $managers = mysqli_query($conn,$managersQuery)
-                    or die("Couldn't find manager names");
-    
-
-    // The following code checks if the submit button is clicked
-    // and inserts the data in the database accordingly
+    session_start();
     ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -121,78 +98,6 @@
                     <div class=" form-group ">
                         <label for="Salary">Salary(R)</label>
                         <input type="number " class="form-control " name="EmployeeSalary" placeholder="40 000" required>
-                        <br>
-                    </div>
-                    <div class="form-group ">
-                        <label for="position ">Employee Position</label><br>
-                        <select name="position" id="position">
-                            <?php
-                                // use a while loop to fetch data
-                                // from the $all_categories variable
-                                // and individually display as an option
-                                while ($position = mysqli_fetch_array(
-                                        $employeeRole,MYSQLI_ASSOC)):;
-                            ?>
-                            <option value="<?php echo $position['employeeRoleID'];
-                                    // The value we usually set is the primary key
-                                ?>">
-                                <?php echo $position["employeeRole"];
-                                        // To show the category name to the user
-                                    ?>
-                            </option>
-                            <?php
-                                endwhile;
-                                // While loop must be terminated
-                            ?>
-                        </select>
-                        <br>
-                    </div>
-                    <div class="form-group ">
-                        <label for="userType ">Access type</label><br>
-                        <select name="userType" id="userType">
-                            <?php
-                                // use a while loop to fetch data
-                                // from the $all_categories variable
-                                // and individually display as an option
-                                while ($userType = mysqli_fetch_array(
-                                        $userTypes,MYSQLI_ASSOC)):;
-                            ?>
-                            <option value="<?php echo $userType['userTypeID'];
-                                    // The value we usually set is the primary key
-                                ?>">
-                                <?php echo $userType["userType"];
-                                        // To show the category name to the user
-                                    ?>
-                            </option>
-                            <?php
-                                endwhile;
-                                // While loop must be terminated
-                            ?>
-                        </select>
-                        <br>
-                    </div>
-                    <div class="form-group ">
-                        <label for="manager ">Manager</label><br>
-                        <select name="manager">
-                            <?php
-                            // use a while loop to fetch data
-                            // from the $all_categories variable
-                            // and individually display as an option
-                            while ($manage = mysqli_fetch_array(
-                                    $managers,MYSQLI_ASSOC)):;
-                        ?>
-                            <option value="<?php echo $manage["employeeID"];
-                                // The value we usually set is the primary key
-                            ?>">
-                                <?php echo $manage["name"];
-                                    // To show the category name to the user
-                                ?>
-                            </option>
-                            <?php
-                            endwhile;
-                            // While loop must be terminated
-                        ?>
-                        </select>
                         <br>
                     </div>
                     <div class="form-group ">

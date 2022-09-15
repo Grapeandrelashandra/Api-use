@@ -26,9 +26,6 @@
         $dob = $_REQUEST['DOB'];
         $phone = $_REQUEST['phone'];
         $salary = $_REQUEST['EmployeeSalary'];
-        $pos = $_REQUEST['position'];
-        $manager = $_REQUEST['manager'];
-        $userTyper = $_REQUEST['userType'];
         $email = $_REQUEST['email'];
         $password = $_REQUEST['password'];
 
@@ -46,7 +43,7 @@
         // Creating an insert query using SQL syntax and
         // storing it in a variable.
         $sql_insert_employee = "INSERT INTO `employees` (`userID`, `firstName`, `lastName`, `dob`, `contactNumber`, `salary`, `employeeRole`, `manager`, `activeInd`, `createdBy`) 
-        VALUES ('$Uid', '$fname', '$lname', '$dob', '$phone', '$salary', '$pos', '$manager', b'1', '$id');";
+        VALUES ('$Uid', '$fname', '$lname', '$dob', '$phone', '$salary', '2', '1', b'1', '$id');";
 
         // The following code attempts to execute the SQL query
         // if the query executes with no errors
