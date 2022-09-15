@@ -31,7 +31,7 @@
 
 
         $userQ = "INSERT INTO `users` (`email`, `password`, `userType`, `firstTimeLogin`, `activeInd`, `createdBy`, `createdDate`, `modifiedBy`, `modifiedDate`, `deletedBy`, `deletedDate`) 
-        VALUES ('$email', '$password', '1', b'1', b'1', '$id', current_timestamp(), NULL, NULL, NULL, NULL)";
+        VALUES ('$email', '$password', '2', b'1', b'1', '$id', current_timestamp(), NULL, NULL, NULL, NULL)";
 
         $addedUser = mysqli_query($conn, $userQ)
             or die("<h2>add user failed</h2>");
