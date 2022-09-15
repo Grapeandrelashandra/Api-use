@@ -1,30 +1,3 @@
-<?php
-    session_start();
-    if(isset($_SESSION['UserID'])){ 
-        if($_SESSION['UserType'] == 1){ 
-    // Connect to database
-    require_once('assets/php/config.php');
-
-    $conn =  new mysqli(SERVERNAME, USERNAME, PASSWORD, DATABASE)
-            or die("<p style=\"color: red;\">Could not connect to database!</p>");
-  
-    // Get all the categories from category table
-    $userTypeQuery = "SELECT userTypeID, userType FROM usertypes";
-    $userTypes = mysqli_query($conn,$userTypeQuery)
-                    or die("couldn't find user types");
-
-    $employeeRoleQuery = "SELECT * FROM employeeRoles;";
-    $employeeRole = mysqli_query($conn,$employeeRoleQuery) 
-                        or die("couldn't find Roles");
-
-    $managersQuery = "SELECT employeeID, concat(firstName, ' ', lastName) as name FROM employees;";
-    $managers = mysqli_query($conn,$managersQuery)
-                    or die("Couldn't find manager names");
-    
-
-    // The following code checks if the submit button is clicked
-    // and inserts the data in the database accordingly
-    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,24 +30,51 @@
 </head>
 
 <body>
+    <?php
+    session_start();
+    if (isset($_SESSION['UserID'])) {
+        if ($_SESSION['UserType'] == 1) {
+            // Connect to database
+            require_once('assets/php/config.php');
+
+            $conn =  new mysqli(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+                or die("<p style=\"color: red;\">Could not connect to database!</p>");
+
+            // Get all the categories from category table
+            $userTypeQuery = "SELECT userTypeID, userType FROM usertypes";
+            $userTypes = mysqli_query($conn, $userTypeQuery)
+                or die("couldn't find user types");
+
+            $employeeRoleQuery = "SELECT * FROM employeeRoles;";
+            $employeeRole = mysqli_query($conn, $employeeRoleQuery)
+                or die("couldn't find Roles");
+
+            $managersQuery = "SELECT employeeID, concat(firstName, ' ', lastName) as name FROM employees;";
+            $managers = mysqli_query($conn, $managersQuery)
+                or die("Couldn't find manager names");
+
+
+            // The following code checks if the submit button is clicked
+            // and inserts the data in the database accordingly
+    ?>
 
     <!-- Static navbar -->
     <div class="navbar navbar-inverse navbar-static-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
                 <a class="navbar-brand" href="index.php">Epi Use</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="profile.php?id=<?php echo $_SESSION['UserID']; ?>">View profile</a></li>
-                    <?php if($_SESSION['UserType'] == 1){ ?>
-                        <li><a href="adddetails.php">New Profile</a></li>
-                        <li><a href="manage.php">Manage Employees</a></li>
+                    <?php if ($_SESSION['UserType'] == 1) { ?>
+                    <li><a href="adddetails.php">New Profile</a></li>
+                    <li><a href="manage.php">Manage Employees</a></li>
                     <?php } ?>
                     <li><a href="assets/php/SessionEnd.php">log out</a></li>
                 </ul>
@@ -109,12 +109,14 @@
                     </div>
                     <div class="form-group">
                         <label for="DOB">Date of Birth</label>
-                        <input type="date" class="form-control" name="DOB" placeholder="Employee Date Of Birth" required>
+                        <input type="date" class="form-control" name="DOB" placeholder="Employee Date Of Birth"
+                            required>
                         <br>
                     </div>
                     <div class="form-group">
                         <label for="email">Cell Phone Number</label>
-                        <input type="tel" class="form-control" name="phone" placeholder="0630462549" pattern="[0]+[0-9]{9}" required>
+                        <input type="tel" class="form-control" name="phone" placeholder="0630462549"
+                            pattern="[0]+[0-9]{9}" required>
                         <br>
                     </div>
                     <div class=" form-group ">
@@ -126,23 +128,25 @@
                         <label for="position ">Employee Position</label><br>
                         <select name="position" id="position">
                             <?php
-                                // use a while loop to fetch data
-                                // from the $all_categories variable
-                                // and individually display as an option
-                                while ($position = mysqli_fetch_array(
-                                        $employeeRole,MYSQLI_ASSOC)):;
-                            ?>
-                                <option value="<?php echo $position['employeeRoleID'];
-                                    // The value we usually set is the primary key
-                                ?>">
-                                    <?php echo $position["employeeRole"];
-                                        // To show the category name to the user
+                                    // use a while loop to fetch data
+                                    // from the $all_categories variable
+                                    // and individually display as an option
+                                    while ($position = mysqli_fetch_array(
+                                        $employeeRole,
+                                        MYSQLI_ASSOC
+                                    )) :;
                                     ?>
-                                </option>
+                            <option value="<?php echo $position['employeeRoleID'];
+                                                        // The value we usually set is the primary key
+                                                        ?>">
+                                <?php echo $position["employeeRole"];
+                                            // To show the category name to the user
+                                            ?>
+                            </option>
                             <?php
-                                endwhile;
-                                // While loop must be terminated
-                            ?>
+                                    endwhile;
+                                    // While loop must be terminated
+                                    ?>
                         </select>
                         <br>
                     </div>
@@ -150,59 +154,65 @@
                         <label for="userType ">Access type</label><br>
                         <select name="userType" id="userType">
                             <?php
-                                // use a while loop to fetch data
-                                // from the $all_categories variable
-                                // and individually display as an option
-                                while ($userType = mysqli_fetch_array(
-                                        $userTypes,MYSQLI_ASSOC)):;
-                            ?>
-                                <option value="<?php echo $userType['userTypeID'];
-                                    // The value we usually set is the primary key
-                                ?>">
-                                    <?php echo $userType["userType"];
-                                        // To show the category name to the user
+                                    // use a while loop to fetch data
+                                    // from the $all_categories variable
+                                    // and individually display as an option
+                                    while ($userType = mysqli_fetch_array(
+                                        $userTypes,
+                                        MYSQLI_ASSOC
+                                    )) :;
                                     ?>
-                                </option>
+                            <option value="<?php echo $userType['userTypeID'];
+                                                        // The value we usually set is the primary key
+                                                        ?>">
+                                <?php echo $userType["userType"];
+                                            // To show the category name to the user
+                                            ?>
+                            </option>
                             <?php
-                                endwhile;
-                                // While loop must be terminated
-                            ?>
+                                    endwhile;
+                                    // While loop must be terminated
+                                    ?>
                         </select>
                         <br>
                     </div>
                     <div class="form-group ">
-                    <label for="manager ">Manager</label><br>
-                    <select name="manager">
-                        <?php
-                            // use a while loop to fetch data
-                            // from the $all_categories variable
-                            // and individually display as an option
-                            while ($manage = mysqli_fetch_array(
-                                    $managers,MYSQLI_ASSOC)):;
-                        ?>
+                        <label for="manager ">Manager</label><br>
+                        <select name="manager">
+                            <?php
+                                    // use a while loop to fetch data
+                                    // from the $all_categories variable
+                                    // and individually display as an option
+                                    while ($manage = mysqli_fetch_array(
+                                        $managers,
+                                        MYSQLI_ASSOC
+                                    )) :;
+                                    ?>
                             <option value="<?php echo $manage["employeeID"];
-                                // The value we usually set is the primary key
-                            ?>">
+                                                        // The value we usually set is the primary key
+                                                        ?>">
                                 <?php echo $manage["name"];
-                                    // To show the category name to the user
-                                ?>
+                                            // To show the category name to the user
+                                            ?>
                             </option>
-                        <?php
-                            endwhile;
-                            // While loop must be terminated
-                        ?>
-                    </select>
-                    <br>
-                    </div>
-                    <div class="form-group ">
-                        <label for="email ">Email Addresss</label> <input type="email " class="form-control " name="email" id="NameInputEmail1 " placeholder="James203@epiuse.co.za " required>
+                            <?php
+                                    endwhile;
+                                    // While loop must be terminated
+                                    ?>
+                        </select>
                         <br>
                     </div>
                     <div class="form-group ">
-                        <label for="password ">Default Password</label> <input type="password" class="form-control " name="password" id="Inputpassword " placeholder="" required>
+                        <label for="email ">Email Addresss</label> <input type="email " class="form-control "
+                            name="email" id="NameInputEmail1 " placeholder="James203@epiuse.co.za " required>
                         <br>
                     </div>
-                    <button type="submit" name = "submit" id= "submit" class="btn btn-success ">SUBMIT</button>
+                    <div class="form-group ">
+                        <label for="password ">Default Password</label> <input type="password" class="form-control "
+                            name="password" id="Inputpassword " placeholder="" required>
+                        <br>
+                    </div>
+                    <button type="submit" name="submit" id="submit" class="btn btn-success ">SUBMIT</button>
                 </form>
             </div>
         </div>
@@ -219,11 +229,12 @@
     <script src="assets/js/bootstrap.min.js "></script>
 </body>
 <?php
-        }else{
+        } else {
             header("location: index.php");
-        }}else{
-            header("location: signin.php");
         }
+    } else {
+        header("location: signin.php");
+    }
 ?>
 
 </html>
