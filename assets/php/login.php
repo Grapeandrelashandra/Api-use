@@ -35,7 +35,11 @@
         $_SESSION["UserID"] = $row['userID'];
         $_SESSION["UserType"] = $row['userType'];
         
-        header('Location: ../../index.php');
+        if(isset($_SESSION["UserID"])){
+            header('Location: ../../index.php');
+        }else {
+            echo "<script> alert('sign in failied');</script>";
+        }
 ?>
 
 </body>
