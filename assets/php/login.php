@@ -28,26 +28,12 @@
         
         $result = mysqli_query($conn, $query)
                 or die("<p style=\"color: red;\">Could not execute query!</p>");
-
-        $query = "SELECT * from employees WHERE userID = '$email' AND password = '$password';";
-
-        $result = mysqli_query($conn, $query)
-                or die("<p style=\"color: red;\">Could not execute query!</p>");
-
         
         
         $row = mysqli_fetch_array($result);
 
         $_SESSION["UserID"] = $row['userID'];
         $_SESSION["UserType"] = $row['userType'];
-
-        $query = "SELECT concat(firstName, \" \", lastName) as name from employees WHERE userID = \'".$_SESSION["UserID"]."'\'";
-
-        $result = mysqli_query($conn, $query)
-                or die("<p style=\"color: red;\">Could not execute query!</p>");
-
-        $row = mysqli_fetch_array($result);
-        $_SESSION["name"] = $row['name'];
         
         header('Location: ../../index.php');
 ?>

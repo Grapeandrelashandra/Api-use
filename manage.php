@@ -61,11 +61,12 @@ table.dataTable thead .sorting_desc_disabled:before {
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-
-                    <li><a href="profile.html">View profile</a></li>
-                    <li>
-                        <a href="manage.php">Manage Employees</a>
-                    </li>
+                    <li><a href="profile.php?id=<?php echo $_SESSION['UserID']; ?>">View profile</a></li>
+                    <?php if($_SESSION['UserType'] == 1){ ?>
+                        <li><a href="adddetails.php">New Profile</a></li>
+                        <li><a href="manage.php">Manage Employees</a></li>
+                    <?php } ?>
+                    <li><a href="assets/php/SessionEnd.php">log out</a></li>
                 </ul>
             </div>
             <!--/.nav-collapse -->
@@ -118,13 +119,16 @@ table.dataTable thead .sorting_desc_disabled:before {
                                         or die("<p style=\"color: red;\">Could not connect to database!</p>");
 
                                 // issue query instructions
-                                $query = "SELECT concat(t1.firstName , \" \",  t1.lastName) as employee , concat( t3.firstName , \" \", t3.lastName) as manager , t2.employeeRole, t1.employeeID from employees as t1
-                                            INNER JOIN employeeroles as t2  ON t1.employeeRole = t2.employeeRoleID
-                                            INNER JOIN employees as t3 ON t1.manager = t3.employeeID or t1.manager = 0;";
+                                $query = "SELECT IFNULL(CONCAT(emp2.lastname, ' ', emp2.firstname), '') AS manager 
+                                ,concat(emp.firstName , ' ',  emp.lastName) AS employee, emp.employeeID, emp.userID as user, er.employeeRole
+                                from employees as emp
+                                    left join employees as emp2 ON emp.manager = emp2.employeeID
+                                    Right join employeeroles as er ON emp.employeeRole = er.employeeRoleID;";
                                 
                                 $result = mysqli_query($conn, $query)
                                         or die("<p style=\"color: red;\">Could not find employees</p>");
                                 while($row = mysqli_fetch_array($result)){
+                                    $uid = $row['user'];
                             ?>
                                 <tr>
                                     <td><?php echo $row['employeeID'] ?></td>
@@ -132,8 +136,8 @@ table.dataTable thead .sorting_desc_disabled:before {
                                     <td><?php if($row['manager'] != $row['employee'] ){echo $row['manager'];} ?></td>
                                     <td><?php echo $row['employeeRole'] ?></td>
                                     <td>
-                                        <button type="button" class="btn btn-primary" data-toggle="tooltip"
-                                            data-placement="top" title="View employee profile"><i class="fa-solid fa-eye"></i></button>
+                                    <a href="profile.php?id=<?php echo $uid; ?>"><button type="button" class="btn btn-primary" data-toggle="tooltip"
+                                            data-placement="top" title="View employee profile" ><i class="fa-solid fa-eye"></i></button></a>
                                         <button type="button" class="btn btn-success" data-toggle="tooltip"
                                             data-placement="top" title="Edit employee profile"><i class="fa-light fa-pen-to-square"></i></button>
                                         <button type="button" class="btn btn-danger" data-toggle="tooltip"
