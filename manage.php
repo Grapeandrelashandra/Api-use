@@ -46,6 +46,7 @@ table.dataTable thead .sorting_desc_disabled:before {
         session_start();
         if (isset($_SESSION['UserID'])) {
 ?>
+
 <body>
 
     <!-- Static navbar -->
@@ -63,8 +64,8 @@ table.dataTable thead .sorting_desc_disabled:before {
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="profile.php?id=<?php echo $_SESSION['UserID']; ?>">View profile</a></li>
                     <?php if($_SESSION['UserType'] == 1){ ?>
-                        <li><a href="adddetails.php">New Profile</a></li>
-                        <li><a href="manage.php">Manage Employees</a></li>
+                    <li><a href="adddetails.php">New Profile</a></li>
+                    <li><a href="manage.php">Manage Employees</a></li>
                     <?php } ?>
                     <li><a href="assets/php/SessionEnd.php">log out</a></li>
                 </ul>
@@ -112,7 +113,7 @@ table.dataTable thead .sorting_desc_disabled:before {
                                 </tr>
                             </thead>
                             <tbody>
-                            <?php
+                                <?php
                                 require_once('assets/php/config.php');
 
                                 $conn =  new mysqli(SERVERNAME, USERNAME, PASSWORD, DATABASE)
@@ -123,7 +124,8 @@ table.dataTable thead .sorting_desc_disabled:before {
                                 ,concat(emp.firstName , ' ',  emp.lastName) AS employee, emp.employeeID, emp.userID as user, er.employeeRole
                                 from employees as emp
                                     left join employees as emp2 ON emp.manager = emp2.employeeID
-                                    Right join employeeroles as er ON emp.employeeRole = er.employeeRoleID;";
+                                    Right join employeeroles as er ON emp.employeeRole = er.employeeRoleID
+                                    Where emp.employeeRole = er.employeeRoleID;";
                                 
                                 $result = mysqli_query($conn, $query)
                                         or die("<p style=\"color: red;\">Could not find employees</p>");
@@ -136,12 +138,16 @@ table.dataTable thead .sorting_desc_disabled:before {
                                     <td><?php if($row['manager'] != $row['employee'] ){echo $row['manager'];} ?></td>
                                     <td><?php echo $row['employeeRole'] ?></td>
                                     <td>
-                                    <a href="profile.php?id=<?php echo $uid; ?>"><button type="button" class="btn btn-primary" data-toggle="tooltip"
-                                            data-placement="top" title="View employee profile" ><i class="fa-solid fa-eye"></i></button></a>
+                                        <a href="profile.php?id=<?php echo $uid; ?>"><button type="button"
+                                                class="btn btn-primary" data-toggle="tooltip" data-placement="top"
+                                                title="View employee profile"><i
+                                                    class="fa-solid fa-eye"></i></button></a>
                                         <button type="button" class="btn btn-success" data-toggle="tooltip"
-                                            data-placement="top" title="Edit employee profile"><i class="fa-light fa-pen-to-square"></i></button>
+                                            data-placement="top" title="Edit employee profile"><i
+                                                class="fa-light fa-pen-to-square"></i></button>
                                         <button type="button" class="btn btn-danger" data-toggle="tooltip"
-                                            data-placement="top" title="Delete employee profile"><i class="fa-regular fa-trash"></i></button>
+                                            data-placement="top" title="Delete employee profile"><i
+                                                class="fa-regular fa-trash"></i></button>
                                     </td>
                                 </tr>
                                 <?php }?>
@@ -170,7 +176,7 @@ table.dataTable thead .sorting_desc_disabled:before {
 
             <!-- +++++ Footer Section +++++ -->
 
-            
+
             <!-- Bootstrap core JavaScript
     ================================================== -->
             <!-- Placed at the end of the document so the pages load faster -->
