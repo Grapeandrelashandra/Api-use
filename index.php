@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-<?php
-    session_start();
-    if (isset($_SESSION['UserID'])) {
+    <?php
+    // session_start();
+    // if (isset($_SESSION['UserID'])) {
     ?>
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js">
@@ -144,8 +144,8 @@
 
                     <li><a href="profile.php?id=<?php echo $_SESSION['UserID']; ?>">View profile</a></li>
                     <?php if($_SESSION['UserType'] == 1){ ?>
-                        <li><a href="adddetails.php">New Profile</a></li>
-                        <li><a href="manage.php">Manage Employees</a></li>
+                    <li><a href="adddetails.php">New Profile</a></li>
+                    <li><a href="manage.php">Manage Employees</a></li>
                     <?php } ?>
                     <li><a href="assets/php/SessionEnd.php">log out</a></li>
                 </ul>
@@ -184,9 +184,9 @@
         <script src="assets/js/bootstrap.min.js "></script>
 
         <?php
-    } else {
-        header('Location: signin.php');
-    }
+    // } else {
+    //     header('Location: signin.php');
+    // }
         ?>
 </body>
 
